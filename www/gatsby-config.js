@@ -16,6 +16,7 @@ module.exports = {
       resolve: "gatsby-plugin-manifest",
       options: {
         icon: "src/images/icon.png",
+        appendScript: require.resolve(`./src/pwa/service-worker.js`),
       },
     },
     "gatsby-transformer-sharp",
@@ -27,5 +28,19 @@ module.exports = {
       },
       __key: "images",
     },
-  ],
+    {
+      resolve: 'gatsby-plugin-module-resolver',
+      options: {
+        root: './src',
+        aliases: {
+          "@components": "./components",
+          "@gql": "./gql",
+          "@hooks": "./hooks",
+          "@pages": "./pages",
+          "@styles": "./styles",
+          "@services": "./services"
+        }
+      }
+    }
+  ]
 };
