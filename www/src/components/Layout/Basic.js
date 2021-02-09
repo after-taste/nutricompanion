@@ -3,6 +3,10 @@ import Flex from '@components/Flex/Flex';
 import Header from '@components/Header/Header';
 import Footer from '@components/Footer/Footer';
 
+import '@styles/variables.scss';
+import '@styles/mixins.scss';
+import '@styles/global.scss';
+
 import '@styles/components/Layout/Layout.scss';
 
 export default ({ children }) => {
@@ -14,10 +18,7 @@ export default ({ children }) => {
                 justifyContent="center">
                 <Flex
                     className="main-wrapper"
-                    flexDirection="column"
-                    maxWidth={1116}
-                    minWidth={320}
-                    padding="15px">
+                    flexDirection="column">
                     <Header />
                     <Flex
                         flexDirection="column">

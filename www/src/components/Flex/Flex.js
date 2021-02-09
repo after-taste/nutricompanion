@@ -14,12 +14,12 @@ export default ({ children, ...props }) => (
                 flexWrap: props.flexWrap || 'nowrap',
                 flex: props.flex || '0 1 auto',
                 alignItems: props.alignItems || 'stretch',
-                margin: props.margin || '0',
-                padding: props.padding || '0',
-                width: props.width || 'auto',
-                height: props.height || 'auto',
-                maxWidth: props.maxWidth || 'none',
-                minWidth: props.minWidth || 'none'
+                // margin: props.margin || '0',
+                // padding: props.padding || '0',
+                // width: props.width || 'auto',
+                // height: props.height || 'auto',
+                // maxWidth: props.maxWidth || 'none',
+                // minWidth: props.minWidth || 'none'
             }}
         >
             {children}
