@@ -8,7 +8,8 @@ export default () => {
     return (
         <React.Fragment>
             <Flex
-                className="header-container">
+                className="header-container"
+                alignItems="center">
                 <Hamburguer />
                 <h1>Nutricompanion</h1>
             </Flex>
