@@ -1,0 +1,15 @@
+.banner-container {
+    height: 75px;
+    width: 100vw;
+    left: 0px;
+    // z-index: -1;
+    // position: sticky;
+    background-color: rosybrown;
+    padding: 5px 25px;
+
+    button {
+        height: 25px;
+        width: 25px;
+        border-radius: 25px;
+    }
+}

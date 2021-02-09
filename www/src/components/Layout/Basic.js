@@ -2,6 +2,7 @@ import React from 'react';
 import Flex from '@components/Flex/Flex';
 import Header from '@components/Header/Header';
 import Footer from '@components/Footer/Footer';
+import Banner from '@components/Banner/Banner';
 
 import '@styles/variables.scss';
 import '@styles/mixins.scss';
@@ -20,7 +21,9 @@ export default ({ children }) => {
                     className="main-wrapper"
                     flexDirection="column">
                     <Header />
+                    <Banner />
                     <Flex
+                        className="content"
                         flexDirection="column">
                         {children}
                     </Flex>

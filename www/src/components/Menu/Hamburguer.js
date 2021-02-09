@@ -12,7 +12,7 @@ export default () => {
     return (
         <React.Fragment>
             <Flex
-                className="hamburguer-toggle">
+                className={`hamburguer-toggle ${isOpen && 'open'}`}>
                 <button
                     onClick={() => setIsOpen(!isOpen)}>
                     {isOpen ? 'x' : '+'}
