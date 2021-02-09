@@ -20,8 +20,16 @@ export default () => {
             </Flex>
             {isOpen &&
                 <Flex
-                    className="hamburguer-container">
+                    className="hamburguer-container"
+                    flexDirection="column">
                     <h1>Title</h1>
+                    <ul>
+                        <li>Page 1</li>
+                        <li>Page 2</li>
+                        <li>Page 3</li>
+                        <li>Page 4</li>
+                        <li>Page 5</li>
+                    </ul>
                 </Flex>
             }
         </React.Fragment>
