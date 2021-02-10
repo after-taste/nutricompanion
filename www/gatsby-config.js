@@ -36,6 +36,7 @@ module.exports = {
           "@components": "./components",
           "@gql": "./gql",
           "@hooks": "./hooks",
+          "@images": "./images",
           "@pages": "./pages",
           "@styles": "./styles",
           "@services": "./services"

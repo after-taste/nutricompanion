@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'gatsby';
 import Flex from '@components/Flex/Flex';
 import Hamburguer from '@components/Menu/Hamburguer';
 
@@ -11,7 +12,9 @@ export default () => {
                 className="header-container"
                 alignItems="center">
                 <Hamburguer />
-                <h1>Nutricompanion</h1>
+                <Link to="/">
+                    <h1>Nutricompanion</h1>
+                </Link>
             </Flex>
         </React.Fragment>
     );

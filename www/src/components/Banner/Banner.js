@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { useSessionState } from '@dannyman/use-store';
 import Flex from '@components/Flex/Flex';
 
 import '@styles/components/Banner/Banner.scss';
 
 export default () => {
-    const [show, setShow] = useState(true);
+    const [show, setShow] = useSessionState('nc:global:banner', true);
 
     return show && (
         <React.Fragment>

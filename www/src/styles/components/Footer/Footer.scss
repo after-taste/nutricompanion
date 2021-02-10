@@ -1,0 +1,37 @@
+.footer-container {
+    background-color: slateblue;
+
+    .navigation-container {
+        width: 100%;
+        padding: 15px;
+
+        .links-container {
+            padding: 5px 15px;
+
+            .link {
+                color: white;
+                margin: 5px 0;
+            }
+        }
+
+        .social-container {
+            // padding: 0 5px;
+
+            .social-logo {
+                // filter: invert(18%) sepia(98%) saturate(2657%) hue-rotate(289deg) brightness(121%) contrast(140%);
+                width: 25px;
+                height: 25px;
+                margin: 0 10px;
+            }
+        }
+    }
+
+    .contact-container {
+        color: white;
+        font-size: small;
+    }
+
+    .copyright-container {
+        color: yellow;
+    }
+}
