@@ -5,9 +5,9 @@ import Flex from '@components/Flex/Flex';
 import '@styles/components/Banner/Banner.scss';
 
 export default () => {
-    const [show, setShow] = useSessionState('nc:global:banner', true);
+    const [hide, setHide] = useSessionState('nc:global:banner', false);
 
-    return show && (
+    return !hide && (
         <React.Fragment>
             <Flex
                 className="banner-container"
@@ -15,7 +15,7 @@ export default () => {
                 justifyContent="space-evenly">
                 <p>Something important</p>
                 <button
-                    onClick={() => setShow(false)}>
+                    onClick={() => setHide(true)}>
                     x
                 </button>
             </Flex>
