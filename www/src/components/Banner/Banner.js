@@ -4,7 +4,7 @@ import Flex from '@components/Flex/Flex';
 
 import '@styles/components/Banner/Banner.scss';
 
-const games = [{ name: 'Danny', slug: 'Slug', author: 'Author' }];
+// const games = [{ name: 'Danny', slug: 'Slug', author: 'Author' }];
 
 
 

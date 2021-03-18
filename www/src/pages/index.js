@@ -1,7 +1,10 @@
 import React from 'react';
+import { graphql } from 'gatsby';
 // import Flex from '@components/Flex/Flex';
 
-export default () => {
+export default ({ data }) => {
+  console.dir(data);
+
   return (
     <React.Fragment>
       <h1>HTML Ipsum Presents</h1>
@@ -26,3 +29,44 @@ export default () => {
     </React.Fragment>
   )
 };
+
+export const query = graphql`
+query MyQuery {
+  datoCmsPaciente(cDula: {eq: "603890925"}){
+    nombre
+    dieta {
+      diaDeLaSemana
+      planAlimenticio {
+        caloriasDiarias
+        desayuno {
+          ...menu
+        }
+        meriendaMaAna {
+          ...menu
+        }
+        almuerzo {
+          ...menu
+        }
+        meriendaTarde {
+          ...menu
+        }
+        cena {
+          ...menu
+        }
+        meriendaNoche {
+          ...menu
+        }
+      }
+    }
+  }
+}
+
+fragment menu on DatoCmsMenu {
+  ejemplo
+  cantidad
+  alimento {
+    nombre
+    intercambios
+  }
+}
+`;
