@@ -11,12 +11,22 @@ module.exports = {
     },
     "gatsby-plugin-sass",
     "gatsby-plugin-sharp",
-    "gatsby-plugin-offline",
     {
       resolve: "gatsby-plugin-manifest",
       options: {
         icon: "src/images/icon.png",
-        appendScript: require.resolve(`./src/pwa/service-worker.js`),
+        name: `Nutricompanion`,
+        short_name: `Nutri`,
+        start_url: `/`,
+        background_color: `#f7f0eb`,
+        theme_color: `#a2466c`,
+        display: `standalone`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-offline`,
+      options: {
+        appendScript: `src/pwa/service-worker.js`,
       },
     },
     "gatsby-transformer-sharp",

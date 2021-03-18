@@ -4,8 +4,39 @@ import Flex from '@components/Flex/Flex';
 
 import '@styles/components/Banner/Banner.scss';
 
+const games = [{ name: 'Danny', slug: 'Slug', author: 'Author' }];
+
+
+
 export default () => {
-    const [hide, setHide] = useSessionState('nc:global:banner', false);
+    const [hide, setHide] = useSessionState('nc:global:banner');
+
+    // const enableNotifications = async () => {
+    //     const sw = await navigator.serviceWorker.ready;
+    //     const result = await sw.pushManager.subscribe({
+    //         // userVisibleOnly: true,
+    //         // applicationServerKey: 'some-key'
+    //     })
+    //     console.log(result)
+    // };
+
+    const enableNotifications = () => {
+        Notification.requestPermission().then((result) => {
+            if (result === 'granted') {
+                const notifTitle = 'Title'
+                const notifBody = `Body`;
+                // const notifImg = `data/img/${games[randomItem].slug}.jpg`;
+                const options = {
+                    body: notifBody,
+                    // icon: notifImg,
+                };
+                new Notification(notifTitle, options);
+                // setTimeout(randomNotification, 3000);
+            }
+        });
+
+        setHide(true);
+    };
 
     return !hide && (
         <React.Fragment>
@@ -13,9 +44,9 @@ export default () => {
                 className="banner-container"
                 alignItems="center"
                 justifyContent="space-evenly">
-                <p>Something important</p>
+                <p>Enable Notifications</p>
                 <button
-                    onClick={() => setHide(true)}>
+                    onClick={enableNotifications}>
                     x
                 </button>
             </Flex>
