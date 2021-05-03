@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 import Flex from '@components/Flex/Flex';
 import Hamburguer from '@components/Menu/Hamburguer';
 
-import '@styles/components/Header/Header.scss';
+import '@components/Header/Header.scss';
 
 export default () => {
     return (

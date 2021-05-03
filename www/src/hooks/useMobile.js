@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { isBrowser } from '@services/utils';
 
 const MOBILE_MAX_WIDTH = 1024;
@@ -6,18 +6,19 @@ const MOBILE_MAX_WIDTH = 1024;
 const useMobile = () => {
     let [isMobile, setIsMobile] = useState(false);
 
+    const handleStatusChange = useCallback(() => {
+        const w = document.documentElement.clientWidth || 0;
+        setIsMobile(() => (w <= MOBILE_MAX_WIDTH));
+    });
+
     useEffect(() => {
         if (isBrowser) {
-            function handleStatusChange() {
-                var w = document.documentElement.clientWidth || 0;
-                setIsMobile(() => w <= MOBILE_MAX_WIDTH);
-            }
-
             handleStatusChange();
+
             window.addEventListener('resize', handleStatusChange);
             return () => window.removeEventListener('resize', handleStatusChange);
         }
-    });
+    }, []);
 
     return isMobile;
 };

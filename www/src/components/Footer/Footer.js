@@ -7,7 +7,7 @@ import instagramLogo from '@images/icons/instagram.svg';
 import whatsappLogo from '@images/icons/whatsapp.svg';
 import youtubeLogo from '@images/icons/youtube.svg';
 
-import '@styles/components/Footer/Footer.scss';
+import '@components/Footer/Footer.scss';
 
 const links = [
     { text: 'Page 1', href: '/page1' },

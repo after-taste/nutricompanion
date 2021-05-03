@@ -43,6 +43,7 @@ module.exports = {
       options: {
         root: './src',
         aliases: {
+          "@blocks": "./blocks",
           "@components": "./components",
           "@gql": "./gql",
           "@hooks": "./hooks",

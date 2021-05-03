@@ -8,7 +8,7 @@ import '@styles/variables.scss';
 import '@styles/mixins.scss';
 import '@styles/global.scss';
 
-import '@styles/components/Layout/Layout.scss';
+import '@components/Layout/Basic.scss';
 
 export default ({ children }) => {
     return (

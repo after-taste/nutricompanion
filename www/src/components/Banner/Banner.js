@@ -2,7 +2,7 @@ import React from 'react';
 import { useSessionState } from '@dannyman/use-store';
 import Flex from '@components/Flex/Flex';
 
-import '@styles/components/Banner/Banner.scss';
+import '@components/Banner/Banner.scss';
 
 // const games = [{ name: 'Danny', slug: 'Slug', author: 'Author' }];
 

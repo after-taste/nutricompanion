@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Flex from '@components/Flex/Flex';
 
-import '@styles/components/Menu/Hamburguer.scss';
+import '@components/Menu/Hamburguer.scss';
 
 export default () => {
     const [isOpen, setIsOpen] = useState(false);
