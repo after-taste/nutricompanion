@@ -5,7 +5,7 @@ import Comida from '@blocks/PlanAlimenticio/Comida';
 
 // import '@blocks/PlanAlimenticio/Diario.scss';
 
-export default ({ diaDeLaSemana, caloriasDiarias, planAlimenticio }) => {
+export default ({ diaDeLaSemana, caloriasDiarias, planAlimenticio, ...props }) => {
     console.log(planAlimenticio)
     return (
         <Flex
@@ -16,6 +16,7 @@ export default ({ diaDeLaSemana, caloriasDiarias, planAlimenticio }) => {
                 <Comida
                     tiempoDeComida={plan.tiempo}
                     planAlimenticio={plan.plan}
+                    {...props}
                     key={index} />
             ) : null)}
         </Flex>

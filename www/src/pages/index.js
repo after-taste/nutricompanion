@@ -18,7 +18,7 @@ const DAYS = [
 export default ({ data }) => {
   console.dir(data);
 
-  const day = DAYS[(new Date()).getDay()];
+  const day = 'Lunes';//DAYS[(new Date()).getDay()];
 
   const diario = (planAlimenticio) => {
     const desayuno = { tiempo: 'Desayuno', plan: planAlimenticio.desayuno };
@@ -57,6 +57,7 @@ export default ({ data }) => {
           <p>Spicy jalapeno bacon ipsum dolor amet tri-tip turkey chicken buffalo meatloaf, beef ribs ground round chislic. Strip steak cupim ham chuck, cow turducken ribeye venison filet mignon ball tip meatloaf leberkas chicken porchetta. Hamburger pork belly tenderloin chicken capicola meatball shoulder ribeye buffalo. Kielbasa pork belly beef t-bone buffalo alcatra pork chop andouille. Short ribs pancetta ground round boudin turducken, chuck rump t-bone tenderloin.</p>
           <Diario
             planAlimenticio={plan.planAlimenticio}
+            mostrarSelector
           />
         </React.Fragment>
         :

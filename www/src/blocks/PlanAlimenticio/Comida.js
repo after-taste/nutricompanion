@@ -4,7 +4,7 @@ import TarjetaComida from '@components/Custom/TarjetaComida';
 
 import '@blocks/PlanAlimenticio/Comida.scss';
 
-export default ({ tiempoDeComida, planAlimenticio }) => {
+export default ({ tiempoDeComida, planAlimenticio, ...props }) => {
     return (
         <Flex
             flexDirection="column">
@@ -14,6 +14,7 @@ export default ({ tiempoDeComida, planAlimenticio }) => {
                     cantidad={comida.cantidad}
                     alimento={comida.alimento}
                     ejemplo={comida.ejemplo}
+                    mostrarSelector={props.mostrarSelector}
                     key={index}
                 />
             ))}
