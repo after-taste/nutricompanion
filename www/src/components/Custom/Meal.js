@@ -43,9 +43,16 @@ export default ({ mealTime, eatingPlan, onReady, ...props }) => {
             className="container"
             flexDirection="column">
             <Flex
-                justifyContent="space-between">
+                justifyContent="space-between"
+                alignItems="center">
                 <h3>{mealTime}</h3>
                 {props.showReadyButton &&
+                    done ?
+                    <img
+                        className="done-icon"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Light_green_check.svg/2048px-Light_green_check.svg.png"
+                        alt="Done" />
+                    :
                     <button onClick={onReadyClick}>
                         Listo
                     </button>
