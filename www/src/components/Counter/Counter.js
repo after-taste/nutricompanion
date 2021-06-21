@@ -21,7 +21,7 @@ export default ({ max }) => {
         if (count > max) {
             decrement();
         } else if (count < 0) {
-            increment()
+            increment();
         }
     }, [count, max]);
 

@@ -19,7 +19,8 @@ export default ({ cantidad, alimento, ejemplo, mostrarSelector }) => {
                 alignItems="center">
                 {mostrarSelector &&
                     <Counter
-                        max={cantidad} />}
+                        max={cantidad} />
+                }
                 <p>
                     <strong>{cantidad} {nombre}</strong>
                 </p>
@@ -29,9 +30,16 @@ export default ({ cantidad, alimento, ejemplo, mostrarSelector }) => {
                 flexDirection="row"
                 alignItems="center"
                 justifyContent="flex-start">
-                <p>
-                    <strong>Ejemplo:</strong> {ejemplo}
-                </p>
+                <details>
+                    <summary>
+                        <strong>Ejemplo</strong>
+                    </summary>
+                    <ul>
+                        <li>{ejemplo}</li>
+                        {alimento.intercambios &&
+                            alimento.intercambios.map(i => (<li>{i}</li>))}
+                    </ul>
+                </details>
             </Flex>
         </Flex>
     );

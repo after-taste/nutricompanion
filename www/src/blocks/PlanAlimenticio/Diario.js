@@ -3,7 +3,7 @@ import Flex from '@components/Flex/Flex';
 
 import Comida from '@blocks/PlanAlimenticio/Comida';
 
-// import '@blocks/PlanAlimenticio/Diario.scss';
+import '@blocks/PlanAlimenticio/Diario.scss';
 
 export default ({ diaDeLaSemana, caloriasDiarias, planAlimenticio, ...props }) => {
     console.log(planAlimenticio)
