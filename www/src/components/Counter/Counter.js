@@ -12,7 +12,7 @@ const reducer = (state, action) => {
     };
 };
 
-export default ({ max }) => {
+export default ({ max, onChange }) => {
     const [{ count }, dispatch] = useReducer(reducer, { count: 0 });
     const decrement = () => dispatch({ type: 'decrement' });
     const increment = () => dispatch({ type: 'increment' });
@@ -24,6 +24,12 @@ export default ({ max }) => {
             increment();
         }
     }, [count, max]);
+
+    useEffect(() => {
+        if (typeof onChange === 'function') {
+            onChange(count);
+        }
+    }, [count]);
 
     return (
         <React.Fragment>

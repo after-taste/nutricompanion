@@ -1,7 +1,8 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 
-import Diario from '@blocks/PlanAlimenticio/Diario';
+import Flex from '@components/Flex/Flex';
+import Meal from '@components/Custom/Meal';
 
 // import '@pages/index.scss';
 
@@ -20,13 +21,13 @@ export default ({ data }) => {
 
   const day = 'Lunes';//DAYS[(new Date()).getDay()];
 
-  const diario = (planAlimenticio) => {
-    const desayuno = { tiempo: 'Desayuno', plan: planAlimenticio.desayuno };
-    const meriendaMaAna = { tiempo: 'Merienda', plan: planAlimenticio.meriendaMaAna };
-    const almuerzo = { tiempo: 'Almuerzo', plan: planAlimenticio.almuerzo };
-    const meriendaTarde = { tiempo: 'Merienda', plan: planAlimenticio.meriendaTarde };
-    const cena = { tiempo: 'Cena', plan: planAlimenticio.cena };
-    const meriendaNoche = { tiempo: 'Merienda', plan: planAlimenticio.meriendaNoche };
+  const diario = (eatingPlan) => {
+    const desayuno = { tiempo: 'Desayuno', plan: eatingPlan.desayuno };
+    const meriendaMaAna = { tiempo: 'Merienda', plan: eatingPlan.meriendaMaAna };
+    const almuerzo = { tiempo: 'Almuerzo', plan: eatingPlan.almuerzo };
+    const meriendaTarde = { tiempo: 'Merienda', plan: eatingPlan.meriendaTarde };
+    const cena = { tiempo: 'Cena', plan: eatingPlan.cena };
+    const meriendaNoche = { tiempo: 'Merienda', plan: eatingPlan.meriendaNoche };
 
     return [
       desayuno,
@@ -39,14 +40,16 @@ export default ({ data }) => {
   };
 
   const dieta = data.datoCmsPaciente.dieta.find(dieta => dieta.diaDeLaSemana === day);
-  console.log(day, 'todays', dieta);
 
   const plan = dieta && {
     diaDeLaSemana: dieta.diaDeLaSemana,
     caloriasDiarias: dieta.planAlimenticio.caloriasDiarias,
-    planAlimenticio: diario(dieta.planAlimenticio)
+    eatingPlan: diario(dieta.planAlimenticio)
   };
 
+  const handleMealDone = (info) => {
+    console.log('Meal done', info)
+  };
 
   return (
     <React.Fragment>
@@ -55,10 +58,24 @@ export default ({ data }) => {
         <React.Fragment>
           <h3>Hoy es {plan.diaDeLaSemana} &#127774; {(new Date()).toLocaleDateString()}</h3>
           <p>Spicy jalapeno bacon ipsum dolor amet tri-tip turkey chicken buffalo meatloaf, beef ribs ground round chislic. Strip steak cupim ham chuck, cow turducken ribeye venison filet mignon ball tip meatloaf leberkas chicken porchetta. Hamburger pork belly tenderloin chicken capicola meatball shoulder ribeye buffalo. Kielbasa pork belly beef t-bone buffalo alcatra pork chop andouille. Short ribs pancetta ground round boudin turducken, chuck rump t-bone tenderloin.</p>
-          <Diario
-            planAlimenticio={plan.planAlimenticio}
-            mostrarSelector
-          />
+          <Flex
+            flexDirection="column">
+            <h3>{plan.diaDeLaSemana}</h3>
+            <p>Calorias a consumir: {plan.caloriasDiarias}</p>
+            {plan.eatingPlan &&
+              plan.eatingPlan.map((plan, index) => plan?.plan.length ?
+                <Meal
+                  key={index}
+                  mealTime={plan.tiempo}
+                  eatingPlan={plan.plan}
+                  showCounter
+                  showReadyButton
+                  onReady={handleMealDone} />
+                :
+                null
+              )
+            }
+          </Flex>
         </React.Fragment>
         :
         <React.Fragment>
