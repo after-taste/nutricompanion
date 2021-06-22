@@ -1,0 +1,12 @@
+.mainLayout {
+}
+
+.mainWrapper {
+    width: 100%;
+    max-width: 1116px;
+    min-width: 320px;
+}
+
+.content {
+    padding: 25px 15px;
+}

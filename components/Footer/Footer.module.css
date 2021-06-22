@@ -1,0 +1,32 @@
+.footerContainer {
+    background-color: gray;
+}
+
+.navigationContainer {
+    width: 100%;
+    padding: 15px;
+}
+
+.linksContainer {
+    padding: 5px 15px;
+}
+
+.link {
+    color: white;
+    margin: 5px 0;
+}
+
+.socialLogo {
+    width: 25px;
+    height: 25px;
+    margin: 0 10px;
+}
+
+.contactContainer {
+    color: white;
+    font-size: small;
+}
+
+.copyrightContainer {
+    color: yellow;
+}
