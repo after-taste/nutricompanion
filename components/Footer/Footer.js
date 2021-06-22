@@ -41,22 +41,41 @@ const Footer = ({ data }) => {
                 </Flex>
                 <Flex
                     flexDirection="row">
-                    <Image
-                        className={styles.socialLogo}
-                        src="/icons/facebook.svg"
-                        alt="Facebook" />
-                    <Image
-                        className={styles.socialLogo}
-                        src="/icons/instagram.svg"
-                        alt="Instagram" />
-                    <Image
-                        className={styles.socialLogo}
-                        src="/icons/whatsapp.svg"
-                        alt="WhatsApp" />
-                    <Image
-                        className={styles.socialLogo}
-                        src="/icons/youtube.svg"
-                        alt="Youtube" />
+                    <Flex
+                        className={styles.socialLogo}>
+                        <Image
+                            width="25px"
+                            height="25px"
+                            src="/icons/facebook.svg"
+                            alt="Facebook" />
+                    </Flex>
+                    <Flex
+                        className={styles.socialLogo}>
+                        <Image
+                            className={styles.socialLogo}
+                            width="25px"
+                            height="25px"
+                            src="/icons/instagram.svg"
+                            alt="Instagram" />
+                    </Flex>
+                    <Flex
+                        className={styles.socialLogo}>
+                        <Image
+                            className={styles.socialLogo}
+                            width="25px"
+                            height="25px"
+                            src="/icons/whatsapp.svg"
+                            alt="WhatsApp" />
+                    </Flex>
+                    <Flex
+                        className={styles.socialLogo}>
+                        <Image
+                            className={styles.socialLogo}
+                            width="25px"
+                            height="25px"
+                            src="/icons/youtube.svg"
+                            alt="Youtube" />
+                    </Flex>
                 </Flex>
             </Flex>
             <Flex
