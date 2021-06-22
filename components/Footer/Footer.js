@@ -1,4 +1,6 @@
 import Link from 'next/link';
+import Image from 'next/image';
+
 import Flex from 'components/Flex/Flex';
 
 import styles from './Footer.module.css';
@@ -39,19 +41,19 @@ const Footer = ({ data }) => {
                 </Flex>
                 <Flex
                     flexDirection="row">
-                    <img
+                    <Image
                         className={styles.socialLogo}
                         src="/icons/facebook.svg"
                         alt="Facebook" />
-                    <img
+                    <Image
                         className={styles.socialLogo}
                         src="/icons/instagram.svg"
                         alt="Instagram" />
-                    <img
+                    <Image
                         className={styles.socialLogo}
                         src="/icons/whatsapp.svg"
                         alt="WhatsApp" />
-                    <img
+                    <Image
                         className={styles.socialLogo}
                         src="/icons/youtube.svg"
                         alt="Youtube" />

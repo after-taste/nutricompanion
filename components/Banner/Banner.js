@@ -1,4 +1,6 @@
 import { useSessionState } from '@dannyman/use-store';
+import Image from 'next/image';
+
 import Flex from 'components/Flex/Flex';
 
 import styles from './Banner.module.css';
@@ -22,7 +24,7 @@ const Banner = () => {
             if (result === 'granted') {
                 const notifTitle = 'Title'
                 const notifBody = `Body`;
-                // const notifImg = `data/img/${games[randomItem].slug}.jpg`;
+                // const notifImg = `data/Image/${games[randomItem].slug}.jpg`;
                 const options = {
                     body: notifBody,
                     // icon: notifImg,

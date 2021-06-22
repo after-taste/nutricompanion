@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import Flex from 'components/Flex/Flex';
 import FoodCard from 'components/Custom/FoodCard';
 
@@ -49,7 +50,7 @@ const Meal = ({ mealTime, eatingPlan, onReady, ...props }) => {
                 <h3>{mealTime}</h3>
                 {props.showReadyButton &&
                     (done ?
-                        <img
+                        <Image
                             className={styles.doneIcon}
                             src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Light_green_check.svg/2048px-Light_green_check.svg.png"
                             alt="Done" />

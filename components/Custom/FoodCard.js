@@ -32,7 +32,7 @@ const FoodCard = ({ quantity, name, example, interchanges, showCounter, onChange
                     <ul>
                         <li>{example}</li>
                         {interchanges &&
-                            interchanges.map(i => (<li>{i}</li>))}
+                            interchanges.map((i, index) => (<li key={index}>{i}</li>))}
                     </ul>
                 </details>
                 {showCounter &&

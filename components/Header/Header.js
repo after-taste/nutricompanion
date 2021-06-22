@@ -11,7 +11,7 @@ const Header = () => {
             flexDirection="row"
             alignItems="center">
             <Hamburguer />
-            <Link href="/">
+            <Link href="/" passHref>
                 <h1>Nutricompanion</h1>
             </Link>
         </Flex>
