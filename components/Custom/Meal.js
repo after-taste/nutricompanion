@@ -50,10 +50,14 @@ const Meal = ({ mealTime, eatingPlan, onReady, ...props }) => {
                 <h3>{mealTime}</h3>
                 {props.showReadyButton &&
                     (done ?
-                        <Image
-                            className={styles.doneIcon}
-                            src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b0/Light_green_check.svg/2048px-Light_green_check.svg.png"
-                            alt="Done" />
+                        <Flex
+                            className={styles.doneIcon}>
+                            <Image
+                                width="25px"
+                                height="25px"
+                                src="/icons/green_check.png"
+                                alt="Done" />
+                        </Flex>
                         :
                         <button onClick={onReadyClick}>
                             Listo
