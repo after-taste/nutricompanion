@@ -1,0 +1,19 @@
+.column1 {
+    width: 55%;
+    justify-content: center;
+}
+
+.column2 {
+    width: 15%;
+    justify-content: center;
+}
+
+.column3 {
+    width: 15%;
+    justify-content: center;
+}
+
+.column4 {
+    width: 15%;
+    justify-content: center;
+}

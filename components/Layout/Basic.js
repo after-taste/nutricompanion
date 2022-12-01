@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import Flex from 'components/Flex/Flex';
 import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
@@ -5,8 +6,26 @@ import Footer from 'components/Footer/Footer';
 import styles from './Basic.module.css';
 
 const Basic = ({ children }) => {
+    const headerRef = useRef();
+    const contentRef = useRef();
+    const footerRef = useRef();
+    const [minHeight, setMinHeight] = useState(null);
+
+    useEffect(() => {
+        const headerHeight = headerRef?.current.scrollHeight;
+        const contentHeight = contentRef?.current.scrollHeight;
+        const footerHeight = footerRef?.current.scrollHeight;
+
+        const domHeight = headerHeight + contentHeight + footerHeight;
+        const windowHeight = window.innerHeight;
+        const difference = windowHeight - domHeight;
+
+        if (difference > 0) {
+            setMinHeight(contentHeight + difference);
+        }
+    }, []);
+
     return (<>
-        <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <Flex
             className={styles.mainLayout}
             justifyContent="center"
@@ -14,13 +33,24 @@ const Basic = ({ children }) => {
             <Flex
                 className={styles.mainWrapper}
                 flexDirection="column">
-                <Header />
-                <Flex
-                    className={styles.content}
-                    flexDirection="column">
-                    {children}
-                </Flex>
-                <Footer />
+                <header
+                    ref={headerRef}>
+                    <Header
+                        user={null} />
+                </header>
+                <main
+                    ref={contentRef}
+                    style={{ minHeight: minHeight }}>
+                    <Flex
+                        className={styles.content}
+                        flexDirection="column">
+                        {children}
+                    </Flex>
+                </main>
+                <footer
+                    ref={footerRef} >
+                    <Footer />
+                </footer>
             </Flex>
         </Flex>
     </>);

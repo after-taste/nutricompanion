@@ -2,3 +2,7 @@
     background-color: gray;
     padding: 5px 25px;
 }
+
+.profilePicture{
+    border-radius: 50%;
+}

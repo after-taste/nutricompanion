@@ -44,8 +44,8 @@ const Footer = ({ data }) => {
                     <Flex
                         className={styles.socialLogo}>
                         <Image
-                            width="25px"
-                            height="25px"
+                            width={25}
+                            height={25}
                             src="/icons/facebook.svg"
                             alt="Facebook" />
                     </Flex>
@@ -53,8 +53,8 @@ const Footer = ({ data }) => {
                         className={styles.socialLogo}>
                         <Image
                             className={styles.socialLogo}
-                            width="25px"
-                            height="25px"
+                            width={25}
+                            height={25}
                             src="/icons/instagram.svg"
                             alt="Instagram" />
                     </Flex>
@@ -62,8 +62,8 @@ const Footer = ({ data }) => {
                         className={styles.socialLogo}>
                         <Image
                             className={styles.socialLogo}
-                            width="25px"
-                            height="25px"
+                            width={25}
+                            height={25}
                             src="/icons/whatsapp.svg"
                             alt="WhatsApp" />
                     </Flex>
@@ -71,8 +71,8 @@ const Footer = ({ data }) => {
                         className={styles.socialLogo}>
                         <Image
                             className={styles.socialLogo}
-                            width="25px"
-                            height="25px"
+                            width={25}
+                            height={25}
                             src="/icons/youtube.svg"
                             alt="Youtube" />
                     </Flex>
