@@ -2,7 +2,7 @@ import Flex from 'components/Flex/Flex';
 
 import styles from './RoutineBox.module.css';
 
-const RoutineBox = () => {
+const RoutineBox = ({ sets }) => {
     return (<>
         <Flex
             fullWidth>
@@ -11,43 +11,47 @@ const RoutineBox = () => {
                 flexDirection="row">
                 <Flex
                     className={styles.column1}>
-                    <p>Ejercicio:</p>
+                    <h4>Ejercicio:</h4>
                 </Flex>
                 <Flex
                     className={styles.column2}>
-                    <p>Sets:</p>
+                    <h4>Sets:</h4>
                 </Flex>
                 <Flex
                     className={styles.column3}>
-                    <p>Reps:</p>
+                    <h4>Reps:</h4>
                 </Flex>
                 <Flex
                     className={styles.column4}>
-                    <p>Maq:</p>
+                    <h4>Maq:</h4>
                 </Flex>
             </Flex>
-            <Flex
-                fullWidth
-                flexDirection="row">
-                <Flex
-                    className={styles.column1}>
-                    <p>Burpee pecho inclinado boca arriba</p>
-                </Flex>
-                <Flex
-                    className={styles.column2}>
-                    <p>5</p>
-                </Flex>
-                <Flex
-                    className={styles.column3}>
-                    <p>15</p>
-                </Flex>
-                <Flex
-                    className={styles.column4}>
-                    <p>25</p>
-                </Flex>
-            </Flex>
+            {sets.map((s) => <RoutineRow set={s} />)}
         </Flex>
     </>);
 };
+
+const RoutineRow = ({ set }) => (<>
+    <Flex
+        fullWidth
+        flexDirection="row">
+        <Flex
+            className={styles.column1}>
+            <p>{set.exercise.name}</p>
+        </Flex>
+        <Flex
+            className={styles.column2}>
+            <p>{set.sets}</p>
+        </Flex>
+        <Flex
+            className={styles.column3}>
+            <p>{set.repetitions}</p>
+        </Flex>
+        <Flex
+            className={styles.column4}>
+            <p>25</p>
+        </Flex>
+    </Flex>
+</>);
 
 export default RoutineBox;

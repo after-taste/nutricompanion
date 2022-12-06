@@ -3,7 +3,7 @@ import Flex from 'components/Flex/Flex';
 
 const Image = ({
     src,
-    alt,
+    alt = 'An Image',
     width,
     height,
     ...props

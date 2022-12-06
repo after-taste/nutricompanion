@@ -20,11 +20,13 @@ const Header = () => {
             <Link href="/" passHref>
                 <h1>Nutricompanion</h1>
             </Link>
-            <Image
-                className={styles.profilePicture}
-                src="/assets/default.webp"
-                width={50}
-                height={50} />
+            <Link href="/user/profile" passHref>
+                <Image
+                    className={styles.profilePicture}
+                    src="/assets/default.webp"
+                    width={50}
+                    height={50} />
+            </Link>
         </Flex>
     </>);
 };
