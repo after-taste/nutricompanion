@@ -1,6 +1,9 @@
+import { useState } from 'react';
 import Flex from 'components/Flex/Flex';
+import Image from 'components/Image/Image';
 
 import styles from './RoutineBox.module.css';
+import Video from 'components/Video/Video';
 
 const RoutineBox = ({ sets }) => {
     return (<>
@@ -26,32 +29,64 @@ const RoutineBox = ({ sets }) => {
                     <h4>Maq:</h4>
                 </Flex>
             </Flex>
-            {sets.map((s) => <RoutineRow set={s} />)}
+            {sets.map((s, i) => <RoutineRow key={`routine-row-${i}`} set={s} />)}
         </Flex>
     </>);
 };
 
-const RoutineRow = ({ set }) => (<>
-    <Flex
-        fullWidth
-        flexDirection="row">
+const RoutineRow = ({ set }) => {
+    const [expanded, setExpanded] = useState(false);
+
+    return (<>
         <Flex
-            className={styles.column1}>
-            <p>{set.exercise.name}</p>
+            fullWidth
+            flexDirection="column"
+            onClick={() => setExpanded(!expanded)}>
+            <Flex
+                fullWidth
+                flexDirection="row">
+                <Flex
+                    className={styles.column1}>
+                    <p>{set.exercise.name}</p>
+                </Flex>
+                <Flex
+                    className={styles.column2}>
+                    <p>{set.sets}</p>
+                </Flex>
+                <Flex
+                    className={styles.column3}>
+                    <p>{set.repetitions}</p>
+                </Flex>
+                <Flex
+                    className={styles.column4}>
+                    <p>25</p>
+                </Flex>
+            </Flex>
+            {expanded &&
+                <Flex
+                    fullWidth
+                    flexDirection="column">
+                    <p>{set.exercise.description}</p>
+                    {set.exercise.howTo &&
+                        <Video
+                            autoPlay
+                            muted
+                            src={set.exercise.howTo.url} />
+                    }
+                    {set.exercise.machine &&
+                        <Flex>
+                            <h5>Maquina:</h5>
+                            <p>{set.exercise.machine.description}</p>
+                            <Image
+                                src={set.exercise.machine.image.url}
+                                width={325}
+                                height={244} />
+                        </Flex>
+                    }
+                </Flex>
+            }
         </Flex>
-        <Flex
-            className={styles.column2}>
-            <p>{set.sets}</p>
-        </Flex>
-        <Flex
-            className={styles.column3}>
-            <p>{set.repetitions}</p>
-        </Flex>
-        <Flex
-            className={styles.column4}>
-            <p>25</p>
-        </Flex>
-    </Flex>
-</>);
+    </>);
+};
 
 export default RoutineBox;
