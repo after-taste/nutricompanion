@@ -1,4 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
+import CssBaseline from '@mui/material/CssBaseline';
+
 import Flex from 'components/Flex/Flex';
 import Header from 'components/Header/Header';
 import Footer from 'components/Footer/Footer';
@@ -26,6 +28,7 @@ const Basic = ({ children }) => {
     }, []);
 
     return (<>
+        <CssBaseline />
         <Flex
             className={styles.mainLayout}
             justifyContent="center"
