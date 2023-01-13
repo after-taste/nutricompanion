@@ -48,6 +48,7 @@ const Login = ({ user, ...props }) => {
                 <Flex>
                     <Text
                         key="sign-in-input"
+                        label="Teléfono"
                         onChange={setPhone} />
                     <Button
                         id="sign-in-button"
@@ -59,6 +60,7 @@ const Login = ({ user, ...props }) => {
                 <Flex>
                     <Text
                         key="verify-input"
+                        label="Codigo de verificación"
                         onChange={setCode} />
                     <Button
                         onClick={verifySignIn}>

@@ -1,15 +1,21 @@
 import { useEffect, useState } from 'react';
+import TextField from '@mui/material/TextField';
 import Flex from 'components/Flex/Flex';
 
-const Text = ({ onChange, defaultValue = '', enabled = true, ...props }) => {
+const Text = ({
+    onChange,
+    label = '',
+    enabled = true,
+    defaultValue = '',
+    ...props
+}) => {
     const [value, setValue] = useState(defaultValue);
+
+    console.log(label)
 
     const onAction = (e) => {
         e.preventDefault();
-
-        if (enabled) {
-            setValue(e.target.value);
-        }
+        if (enabled) setValue(e.target.value);
     };
 
     useEffect(() => {
@@ -21,8 +27,11 @@ const Text = ({ onChange, defaultValue = '', enabled = true, ...props }) => {
     return (<>
         <Flex
             direction="row">
-            <input
-                type="text"
+            <TextField
+                id="outlined-basic"
+                variant="outlined"
+                margin="normal"
+                label={label}
                 value={value}
                 onChange={onAction}
                 {...props} />

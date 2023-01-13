@@ -1,4 +1,5 @@
 import Flex from 'components/Flex/Flex';
+import { default as MUIButton } from '@mui/material/Button';
 
 const Button = ({
     className,
@@ -11,14 +12,15 @@ const Button = ({
     return (<>
         <Flex
             direction="row">
-            <button
+            <MUIButton
+                variant="contained"
                 style={style}
                 className={className}
                 disabled={disabled}
                 onClick={onClick}
                 {...props}>
                 {children}
-            </button>
+            </MUIButton>
         </Flex>
     </>);
 };

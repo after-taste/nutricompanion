@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react';
-import Flex from 'components/Flex/Flex';
+import MenuIcon from '@mui/icons-material/Menu';
+import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 
+import Flex from 'components/Flex/Flex';
 import styles from './Hamburguer.module.css';
 
 const Hamburger = () => {
@@ -16,7 +18,11 @@ const Hamburger = () => {
             <button
                 className={styles.button}
                 onClick={() => setIsOpen(!isOpen)}>
-                {isOpen ? 'x' : '+'}
+                {isOpen ?
+                    <MenuOpenIcon />
+                    :
+                    <MenuIcon />
+                }
             </button>
         </Flex>
         {isOpen &&

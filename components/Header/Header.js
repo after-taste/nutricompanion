@@ -21,7 +21,8 @@ const Header = () => {
             <Link href="/" passHref>
                 <h1>Nutricompanion</h1>
             </Link>
-            <Avatar />
+            <Avatar
+                sx={{ width: 50, height: 50 }} />
         </Flex>
     </>);
 };
