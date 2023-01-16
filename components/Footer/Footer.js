@@ -12,14 +12,15 @@ const links = [
     { text: 'Page 4', href: '/page4' }
 ];
 
-const Footer = ({ data }) => {
+const Footer = ({ theme }) => {
 
     return (<>
         <Flex
             className={styles.footerContainer}
             justifyContent="space-between"
             alignItems="center"
-            flexDirection="column">
+            flexDirection="column"
+            backgroundColor={theme?.primaryColor?.hex}>
             <Flex
                 className={styles.navigationContainer}
                 flexDirection="row"

@@ -7,7 +7,7 @@ import Footer from 'components/Footer/Footer';
 
 import styles from './Basic.module.css';
 
-const Basic = ({ children }) => {
+const Basic = ({ theme, children }) => {
     const headerRef = useRef();
     const contentRef = useRef();
     const footerRef = useRef();
@@ -39,7 +39,8 @@ const Basic = ({ children }) => {
                 <header
                     ref={headerRef}>
                     <Header
-                        user={null} />
+                        user={null}
+                        theme={theme} />
                 </header>
                 <main
                     ref={contentRef}
@@ -52,7 +53,8 @@ const Basic = ({ children }) => {
                 </main>
                 <footer
                     ref={footerRef} >
-                    <Footer />
+                    <Footer
+                        theme={theme} />
                 </footer>
             </Flex>
         </Flex>

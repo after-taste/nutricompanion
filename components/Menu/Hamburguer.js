@@ -27,7 +27,7 @@ const Hamburger = () => {
         </Flex>
         {isOpen &&
             <Flex
-                className={styles.hamburguerContainer}
+                className={styles.hamburgerContainer}
                 flexDirection="column">
                 <h1>Title</h1>
                 <ul>

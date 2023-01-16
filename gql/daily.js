@@ -1,4 +1,4 @@
-const getDailyData = `query getDailyData($id: String) {
+const getDailyDataQuery = `query getDailyDataQuery($id: String) {
     user(filter: {firebaseUid: {eq: $id}}) {
         routine {
             description
@@ -23,4 +23,4 @@ const getDailyData = `query getDailyData($id: String) {
     }
 }`;
 
-export { getDailyData };
+export { getDailyDataQuery };

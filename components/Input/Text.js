@@ -11,8 +11,6 @@ const Text = ({
 }) => {
     const [value, setValue] = useState(defaultValue);
 
-    console.log(label)
-
     const onAction = (e) => {
         e.preventDefault();
         if (enabled) setValue(e.target.value);

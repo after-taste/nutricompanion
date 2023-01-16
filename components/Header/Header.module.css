@@ -3,6 +3,14 @@
     padding: 5px 15px;
 }
 
-.profilePicture{
+.profilePicture {
     border-radius: 50%;
+}
+
+.mainName {
+    text-align: center;
+}
+
+.mainName h1{
+    font-size: 100%;
 }

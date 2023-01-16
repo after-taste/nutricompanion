@@ -1,5 +1,5 @@
 import { request } from 'utils/datoCMS';
-import { getDailyData } from 'gql/daily';
+import { getDailyDataQuery } from 'gql/daily';
 
 import Flex from 'components/Flex/Flex';
 import RoutineBox from 'components/Bll/RoutineBox';
@@ -7,7 +7,6 @@ import withLayout from 'hoc/withLayout';
 // import { usePersistedState } from '@dannyman/use-store';
 
 const Daily = ({ routine, ...props }) => {
-  console.dir(routine)
   return (<>
     <Flex>
       <h1>Hola, Danny!</h1>
@@ -21,7 +20,7 @@ const Daily = ({ routine, ...props }) => {
 
 export const getServerSideProps = async (context) => {
   const data = await request({
-    query: getDailyData,
+    query: getDailyDataQuery,
     variables: { id: 'fMkWUtqq5LQNSparIqgNmXhkDLw1' }
   });
 
