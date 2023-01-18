@@ -1,6 +1,7 @@
 .column1 {
     width: 55%;
     justify-content: center;
+    padding-left: 10px;
 }
 
 .column2 {

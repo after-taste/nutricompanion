@@ -1,11 +1,26 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import Flex from 'components/Flex/Flex';
 import Image from 'components/Image/Image';
 
 import styles from './RoutineBox.module.css';
 import Video from 'components/Video/Video';
 
-const RoutineBox = ({ sets }) => {
+const RoutineBox = ({ routine }) => {
+
+    const dayRoutine = useMemo(() => {
+        return routine ?
+            routine.map((r, i) => {
+                switch (r.__typename) {
+                    case 'MultiSetRecord':
+                        return r.multiSet.map(((s, ix) => <RoutineRow key={`routine-multi-row-${i}-${ix}`} set={s} multiSet />));
+                    case 'SetRecord':
+                        return <RoutineRow key={`routine-row-${i}`} set={r} />;
+                };
+            })
+            :
+            <p>No hay datos para este día.</p>;
+    }, [routine]);
+
     return (<>
         <Flex
             fullWidth>
@@ -29,18 +44,19 @@ const RoutineBox = ({ sets }) => {
                     <h4>Maq:</h4>
                 </Flex>
             </Flex>
-            {sets.map((s, i) => <RoutineRow key={`routine-row-${i}`} set={s} />)}
+            {dayRoutine}
         </Flex>
     </>);
 };
 
-const RoutineRow = ({ set }) => {
+const RoutineRow = ({ set, multiSet }) => {
     const [expanded, setExpanded] = useState(false);
 
     return (<>
         <Flex
             fullWidth
             flexDirection="column"
+            backgroundColor={multiSet ? 'lightgray' : ''}
             onClick={() => setExpanded(!expanded)}>
             <Flex
                 fullWidth
@@ -75,12 +91,14 @@ const RoutineRow = ({ set }) => {
                     }
                     {set.exercise.machine &&
                         <Flex>
-                            <h5>Maquina:</h5>
+                            <h5>Maquina: {set.exercise.machine.name}</h5>
                             <p>{set.exercise.machine.description}</p>
-                            <Image
-                                src={set.exercise.machine.image.url}
-                                width={325}
-                                height={244} />
+                            {set.exercise.machine.image &&
+                                <Image
+                                    src={set.exercise.machine.image?.url}
+                                    width={325}
+                                    height={244} />
+                            }
                         </Flex>
                     }
                 </Flex>
