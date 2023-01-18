@@ -12,14 +12,15 @@ const links = [
     { text: 'Page 4', href: '/page4' }
 ];
 
-const Footer = ({ data }) => {
+const Footer = ({ theme }) => {
 
     return (<>
         <Flex
             className={styles.footerContainer}
             justifyContent="space-between"
             alignItems="center"
-            flexDirection="column">
+            flexDirection="column"
+            backgroundColor={theme?.primaryColor?.hex}>
             <Flex
                 className={styles.navigationContainer}
                 flexDirection="row"
@@ -44,8 +45,8 @@ const Footer = ({ data }) => {
                     <Flex
                         className={styles.socialLogo}>
                         <Image
-                            width="25px"
-                            height="25px"
+                            width={25}
+                            height={25}
                             src="/icons/facebook.svg"
                             alt="Facebook" />
                     </Flex>
@@ -53,8 +54,8 @@ const Footer = ({ data }) => {
                         className={styles.socialLogo}>
                         <Image
                             className={styles.socialLogo}
-                            width="25px"
-                            height="25px"
+                            width={25}
+                            height={25}
                             src="/icons/instagram.svg"
                             alt="Instagram" />
                     </Flex>
@@ -62,8 +63,8 @@ const Footer = ({ data }) => {
                         className={styles.socialLogo}>
                         <Image
                             className={styles.socialLogo}
-                            width="25px"
-                            height="25px"
+                            width={25}
+                            height={25}
                             src="/icons/whatsapp.svg"
                             alt="WhatsApp" />
                     </Flex>
@@ -71,8 +72,8 @@ const Footer = ({ data }) => {
                         className={styles.socialLogo}>
                         <Image
                             className={styles.socialLogo}
-                            width="25px"
-                            height="25px"
+                            width={25}
+                            height={25}
                             src="/icons/youtube.svg"
                             alt="Youtube" />
                     </Flex>

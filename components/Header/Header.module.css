@@ -1,4 +1,16 @@
 .headerContainer {
     background-color: gray;
-    padding: 5px 25px;
+    padding: 5px 15px;
+}
+
+.profilePicture {
+    border-radius: 50%;
+}
+
+.mainName {
+    text-align: center;
+}
+
+.mainName h1{
+    font-size: 100%;
 }
