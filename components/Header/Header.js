@@ -21,7 +21,7 @@ const Header = ({ user, theme }) => {
             backgroundColor={theme?.primaryColor?.hex}>
             {/* <Hamburguer /> */}
             <Link
-                className={styles.mainName}
+                className={styles.linkContainer}
                 href={user ? '/' : '/user/login'}
                 passHref
                 style={{ width: '100%' }}>
@@ -30,11 +30,13 @@ const Header = ({ user, theme }) => {
                     fullWidth
                     alignItems="center">
                     <Image
+                        className={styles.linkLogo}
                         src={theme?.logo.url}
                         width={50}
                         height={50}
                         objectFit="cover" />
                     <P
+                        className={styles.linkTitle}
                         variant="h6">
                         {theme?.name || "Nutricompanion"}
                     </P>
