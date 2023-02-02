@@ -29,7 +29,7 @@ const Hamburger = () => {
             <Flex
                 className={styles.hamburgerContainer}
                 flexDirection="column">
-                <h1>Title</h1>
+                <p>Title</p>
                 <ul>
                     <li>Page 1</li>
                     <li>Page 2</li>

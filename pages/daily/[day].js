@@ -1,37 +1,42 @@
-import { request } from 'utils/datoCMS';
-import { getDailyDataQuery } from 'gql/daily';
-
+import { useState, useMemo, useEffect } from 'react';
+import { useRouter } from 'next/router';
 import Flex from 'components/Flex/Flex';
 import RoutineBox from 'components/Bll/RoutineBox';
+import UserWelcome from 'components/Bll/UserWelcome';
+import P from 'components/Text/P';
 import withLayout from 'hoc/withLayout';
-// import { usePersistedState } from '@dannyman/use-store';
+import { getDayRoutine } from 'services/bll';
 
-const Daily = ({ routine, ...props }) => {
-  console.dir(routine)
+const Daily = ({ user, description, ...props }) => {
+  const router = useRouter();
+  const { day } = router.query;
+
+  const [routine, setRoutine] = useState(null);
+
+  const loadData = async () => {
+    const data = await getDayRoutine(user.uid, day);
+    setRoutine(data);
+  };
+
+  useEffect(() => {
+    if (user?.uid && day) {
+      loadData();
+    }
+  }, [user, day]);
+
   return (<>
     <Flex>
-      <h1>Hola, Danny!</h1>
-      <h3>Hoy es Lunes {(new Date()).toLocaleDateString()} &#127774;</h3>
-      <p>{routine.description}</p>
+      <UserWelcome
+        showClock
+        user={props.user} />
+      <P
+        align="justify">
+        {routine?.description}
+      </P>
       <RoutineBox
-        routine={routine.day1} />
+        routine={routine?.routine} />
     </Flex>
   </>);
-};
-
-export const getServerSideProps = async (context) => {
-  const { day } = context.params;
-
-  const data = await request({
-    query: getDailyDataQuery(day),
-    variables: { id: 'fMkWUtqq5LQNSparIqgNmXhkDLw1' }
-  });
-
-  return {
-    props: {
-      routine: data?.user?.routine
-    },
-  }
 };
 
 export default withLayout(Daily);

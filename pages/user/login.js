@@ -4,9 +4,19 @@ import { usePersistedState } from '@dannyman/use-store';
 import Flex from 'components/Flex/Flex';
 import Text from 'components/Input/Text';
 import Button from 'components/Input/Button';
+import P from 'components/Text/P';
 import withLayout from 'hoc/withLayout';
 import { newRecaptcha, signInWithPhone, verifyPhoneSignIn } from 'services/firebase/auth';
-import { isBrowser } from 'utils';
+import { dummyImages } from 'mocks/images';
+
+const copy = {
+    title: 'Bienvenid@!',
+    body: 'Si usted esta registrado inicie sesión, si no registrese y se le estara contactando pronto.',
+    phoneInput: 'Teléfono',
+    phoneInputHelperText: 'Inicia sesión o Registrate',
+    firstStepButton: 'Pedir código',
+    secondStepButton: 'Código de verificación',
+};
 
 
 const Login = ({ user, ...props }) => {
@@ -31,6 +41,8 @@ const Login = ({ user, ...props }) => {
         }
     };
 
+    const setPhoneHandler = (value) => setPhone('+506' + value);
+
     useEffect(() => {
         window.recaptchaVerifier = newRecaptcha('sign-in-button');
     }, []);
@@ -43,17 +55,26 @@ const Login = ({ user, ...props }) => {
 
     return (<>
         <Flex>
-            <h1>Login</h1>
+            <P
+                variant="h2">
+                {copy.title}
+            </P>
+            <P>
+                {copy.body}
+            </P>
             {!showVerificationBox ?
                 <Flex>
                     <Text
                         key="sign-in-input"
-                        label="Teléfono"
-                        onChange={setPhone} />
+                        label={copy.phoneInput}
+                        helperText={copy.phoneInputHelperText}
+                        onChange={setPhoneHandler} />
                     <Button
                         id="sign-in-button"
                         onClick={onSignInSubmit}>
-                        <p>Sign In</p>
+                        <P variant="button">
+                            {copy.firstStepButton}
+                        </P>
                     </Button>
                 </Flex>
                 :
@@ -64,7 +85,9 @@ const Login = ({ user, ...props }) => {
                         onChange={setCode} />
                     <Button
                         onClick={verifySignIn}>
-                        <p>Verify</p>
+                        <P variant="button">
+                            {copy.secondStepButton}
+                        </P>
                     </Button>
                 </Flex>
             }
@@ -72,19 +95,10 @@ const Login = ({ user, ...props }) => {
     </>);
 };
 
-// const query = `
-// query HomePageQuery($id: String) {}
-// `;
-
 export const getServerSideProps = async (context) => {
-    // const data = await request({
-    //   query: query,
-    //   variables: {}
-    // });
-
     return {
         props: {
-            // data
+            heroImages: dummyImages
         },
     }
 };

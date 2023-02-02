@@ -3,12 +3,16 @@ import {
     linkWithCredential,
     signInWithPhoneNumber,
     RecaptchaVerifier,
-    updateProfile
+    updateProfile,
+    updateEmail,
+    setPersistence,
+    browserLocalPersistence,
 } from 'firebase/auth';
 import { auth } from 'services/firebase';
 import { isBrowser } from 'utils';
 
 auth.languageCode = 'es';
+setPersistence(auth, browserLocalPersistence);
 
 const getIdToken = () => auth.currentUser?.getIdToken();
 
@@ -83,6 +87,16 @@ const updateUser = async (newData) => {
     }
 };
 
+const updateUserEmail = async (newEmail) => {
+    try {
+        await updateEmail(auth.currentUser, newEmail);
+        return true;
+    } catch (error) {
+        console.error('Firebase/users/updateUser Error: ', error.message);
+        return false;
+    }
+};
+
 export {
     auth,
     getIdToken,
@@ -96,5 +110,6 @@ export {
     linkIDTokenWithCurrentUser,
     newRecaptcha,
     parseUser,
-    updateUser
+    updateUser,
+    updateUserEmail,
 };

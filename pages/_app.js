@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { getThemeQuery } from 'gql/theme';
+import { useRouter } from 'next/router';
 import { onAuthStateChanged, parseUser } from 'services/firebase/auth';
 import { request } from 'utils/datoCMS';
 
@@ -11,6 +12,7 @@ import 'styles/globals.css';
 
 const App = ({ Component, pageProps, theme }) => {
     const [user, setUser] = useState(null);
+    const router = useRouter();
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(async (authData) => {
@@ -19,6 +21,7 @@ const App = ({ Component, pageProps, theme }) => {
                 setUser(_user);
             } else {
                 setUser(null);
+                router.push('/user/login');
             }
         });
 

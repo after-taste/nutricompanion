@@ -8,7 +8,7 @@ import Footer from 'components/Footer/Footer';
 
 import styles from './Basic.module.css';
 
-const Basic = ({ theme, heroImages, children }) => {
+const Basic = ({ theme, heroImages, children, ...props }) => {
     const headerRef = useRef();
     const contentRef = useRef();
     const footerRef = useRef();
@@ -40,7 +40,7 @@ const Basic = ({ theme, heroImages, children }) => {
                 <header
                     ref={headerRef}>
                     <Header
-                        user={null}
+                        user={props.user}
                         theme={theme} />
                     <Carousel
                         images={heroImages} />

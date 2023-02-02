@@ -1,14 +1,26 @@
 import { useState, useMemo, useEffect } from 'react';
+import Collapse from '@mui/material/Collapse';
+import CircularProgress from '@mui/material/CircularProgress';
 import Flex from 'components/Flex/Flex';
 import Image from 'components/Image/Image';
-
-import styles from './RoutineBox.module.css';
 import Video from 'components/Video/Video';
+import P from 'components/Text/P';
+
+import styles from './Routine.module.css';
+
+const copy = {
+    noData: 'No hay datos para este día',
+    exerciseTitle: 'Ejercicio',
+    setsTitle: 'Sets',
+    repetitionsTitle: 'Reps',
+    machineTitle: 'Maq',
+    machineExpandedCopy: 'Este ejercicio utiliza la siguiente maquina',
+    machineExpandedTitle: 'Maquina',
+};
 
 const RoutineBox = ({ routine }) => {
-
     const dayRoutine = useMemo(() => {
-        return routine ?
+        return routine?.length > 0 ?
             routine.map((r, i) => {
                 switch (r.__typename) {
                     case 'MultiSetRecord':
@@ -16,44 +28,59 @@ const RoutineBox = ({ routine }) => {
                     case 'SetRecord':
                         return <RoutineRow key={`routine-row-${i}`} set={r} />;
                 };
-            })
-            :
-            <Flex
-                className={styles.noData}
-                flexDirection="row"
-                justifyContent="center"
-                fullWidth>
-                <p>No hay datos para este día.</p>;
-            </Flex>
+            }) : <EmptyRoutineRow />
     }, [routine]);
 
-    return (<>
+    return routine ?
         <Flex
             fullWidth>
-            <Flex
-                fullWidth
-                className={styles.tableTitles}
-                flexDirection="row">
-                <Flex
-                    className={styles.column1}>
-                    <h4>Ejercicio:</h4>
-                </Flex>
-                <Flex
-                    className={styles.column2}>
-                    <h4>Sets:</h4>
-                </Flex>
-                <Flex
-                    className={styles.column2}>
-                    <h4>Reps:</h4>
-                </Flex>
-                <Flex
-                    className={styles.column2}>
-                    <h4>Maq:</h4>
-                </Flex>
-            </Flex>
+            <RoutineTitle />
             {dayRoutine}
         </Flex>
-    </>);
+        :
+        <Flex
+            fullWidth
+            alignItems="center">
+            <CircularProgress />
+        </Flex>;
+};
+
+const RoutineTitle = () => {
+    return (<>
+        <Flex
+            fullWidth
+            className={styles.routineTitles}
+            flexDirection="row">
+            <Flex
+                className={styles.column1}>
+                <P
+                    variant="subtitle2">
+                    {copy.exerciseTitle}
+                </P>
+            </Flex>
+            <Flex
+                className={styles.column2}>
+                <P
+                    variant="subtitle2">
+                    {copy.setsTitle}
+                </P>
+            </Flex>
+            <Flex
+                className={styles.column2}>
+                <P
+                    variant="subtitle2">
+                    {copy.repetitionsTitle}
+                </P>
+            </Flex>
+            <Flex
+                className={styles.column2}>
+                <P
+                    variant="subtitle2" >
+                    {copy.machineTitle}
+                </P>
+            </Flex>
+        </Flex>
+    </>)
 };
 
 const RoutineRow = ({ set, multiSet }) => {
@@ -72,27 +99,41 @@ const RoutineRow = ({ set, multiSet }) => {
                 onClick={() => setExpanded(!expanded)}>
                 <Flex
                     className={styles.column1}>
-                    <p>{set.exercise.name}</p>
+                    <P>
+                        {set.exercise.name}
+                    </P>
                 </Flex>
                 <Flex
                     className={styles.column2}>
-                    <p>{set.sets}</p>
+                    <P>
+                        {set.sets}
+                    </P>
                 </Flex>
                 <Flex
                     className={styles.column2}>
-                    <p>{set.repetitions}</p>
+                    <P>
+                        {set.repetitions}
+                    </P>
                 </Flex>
                 <Flex
                     className={styles.column2}>
-                    <p>25</p>
+                    <P>
+                        25
+                    </P>
                 </Flex>
             </Flex>
-            {expanded &&
+            <Collapse
+                orientation="vertical"
+                in={expanded}
+                sx={{ width: '100%' }}>
                 <Flex
                     className={styles.routineRowExpanded}
                     flexDirection="column"
                     fullWidth>
-                    <p>{set.exercise.description}</p>
+                    <P
+                        variant="body2">
+                        {set.exercise.description}
+                    </P>
                     {set.exercise.howTo &&
                         <Video
                             autoPlay
@@ -101,20 +142,43 @@ const RoutineRow = ({ set, multiSet }) => {
                     }
                     {set.exercise.machine &&
                         <Flex>
-                            <h5>Maquina: {set.exercise.machine.name}</h5>
-                            <p>{set.exercise.machine.description}</p>
+                            <P
+                                variant="overline">
+                                <b>{set.exercise.machine.name}</b>
+                            </P>
+                            <P
+                                variant="body2">
+                                {set.exercise.machine.description}
+                            </P>
                             {set.exercise.machine.image &&
-                                <Image
-                                    src={set.exercise.machine.image?.url}
-                                    width={325}
-                                    height={244} />
+                                <Flex
+                                    className={styles.imageContainer}>
+                                    <Image
+                                        src={set.exercise.machine.image?.url}
+                                        objectFit="cover"
+                                        fill />
+                                </Flex>
                             }
                         </Flex>
                     }
                 </Flex>
-            }
+            </Collapse>
         </Flex>
     </>);
 };
+
+const EmptyRoutineRow = () => (<>
+    <Flex
+        flexDirection="row"
+        justifyContent="center"
+        fullWidth>
+        <P
+            color="orange"
+            align="center"
+            variant="h5">
+            {copy.noData}
+        </P>
+    </Flex>
+</>);
 
 export default RoutineBox;

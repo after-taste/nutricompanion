@@ -2,6 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import Flex from 'components/Flex/Flex';
+import P from 'components/Text/P';
 
 import styles from './Footer.module.css';
 
@@ -85,12 +86,12 @@ const Footer = ({ theme }) => {
             <Flex
                 className={styles.contactContainer}
                 flexDirection="row">
-                <p>Phone: <a href="tel:+496170961709">8888-8888</a> - Email:  <a href="mailto:nutri@companion.com">nutri@companion.com</a></p>
+                <P>Phone: <a href="tel:+496170961709">8888-8888</a> - Email:  <a href="mailto:nutri@companion.com">nutri@companion.com</a></P>
             </Flex>
             <Flex
                 className={styles.copyrightContainer}
                 flexDirection="row">
-                <p>Copyright After Taste, 2023</p>
+                <P>Copyright After Taste, 2023</P>
             </Flex>
         </Flex>
     </>);

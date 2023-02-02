@@ -1,5 +1,6 @@
 .container {
-    height: 20vh;
+    height: 25vh;
+    position: relative;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

@@ -1,46 +1,41 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import Link from 'next/link';
 import Flex from 'components/Flex/Flex';
-import Image from 'components/Image/Image';
-
-import Video from 'components/Video/Video';
 import Button from 'components/Input/Button';
+import P from 'components/Text/P';
 
-import styles from './RoutineBox.module.css';
+import styles from './Routine.module.css';
+import { getAvailableRoutines } from 'services/bll';
 
+const RoutineList = ({ user, routine }) => {
+    const [days, setDays] = useState(null);
 
-const dias = [
-    {
-        name: 'Dia 1',
-        url: '/daily/day1'
-    },
-    {
-        name: 'Dia 2',
-        url: '/daily/day2'
-    },
-    {
-        name: 'Dia 3',
-        url: '/daily/day3'
-    },
-    {
-        name: 'Dia 4',
-        url: '/daily/day4'
-    },
-];
+    const loadData = async () => {
+        const data = await getAvailableRoutines(user.uid);
+        setDays(data);
+    };
 
-const RoutineList = ({ routine }) => {
-
+    useEffect(() => {
+        if (user?.uid) {
+            loadData();
+        }
+    }, [user]);
 
     return (<>
         <Flex
             fullWidth>
-            <h3>Rutinas:</h3>
-            {dias?.map((d, i) =>
-                <Link 
-                key={`link-to-day-${i}`}
-                href={d.url}>
-                    <Button variant="outlined" className={styles.buttons}>
-                        {d.name}
+            <P
+                variant="h6">
+                Rutinas:
+            </P>
+            {days?.map((d, i) =>
+                <Link
+                    key={`link-to-day-${i}`}
+                    href={d.url}>
+                    <Button
+                        variant="outlined"
+                        className={styles.buttons}>
+                        {d.label}
                     </Button>
                 </Link>
             )}

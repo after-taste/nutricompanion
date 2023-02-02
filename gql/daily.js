@@ -2,6 +2,7 @@ const exerciseFragment = `
     name
     description
     machine {
+      name
       image {
         url
       }
@@ -41,4 +42,35 @@ const getDailyDataQuery = (day) => `query getDailyDataQuery($id: String) {
     }
 }`;
 
-export { getDailyDataQuery };
+const getAllRoutines = `query getDailyDataQuery($id: String) {
+    user(filter: {firebaseUid: {eq: $id}}) {
+        routine {
+            day1 {
+              __typename
+            }
+            day2 {
+              __typename
+            }
+            day3 {
+              __typename
+            }
+            day4 {
+              __typename
+            }
+            day5 {
+              __typename
+            }
+            day6 {
+              __typename
+            }
+            day7 {
+              __typename
+            }
+        }
+    }
+}`;
+
+export {
+  getDailyDataQuery,
+  getAllRoutines,
+};
