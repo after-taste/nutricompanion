@@ -3,11 +3,12 @@ import CssBaseline from '@mui/material/CssBaseline';
 
 import Flex from 'components/Flex/Flex';
 import Header from 'components/Header/Header';
+import Carousel from 'components/Hero/Carousel';
 import Footer from 'components/Footer/Footer';
 
 import styles from './Basic.module.css';
 
-const Basic = ({ theme, children }) => {
+const Basic = ({ theme, heroImages, children }) => {
     const headerRef = useRef();
     const contentRef = useRef();
     const footerRef = useRef();
@@ -41,6 +42,8 @@ const Basic = ({ theme, children }) => {
                     <Header
                         user={null}
                         theme={theme} />
+                    <Carousel
+                        images={heroImages} />
                 </header>
                 <main
                     ref={contentRef}

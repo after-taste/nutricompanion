@@ -1,7 +1,12 @@
+.buttons {
+    margin: 5px;
+}
+
+
 .column1 {
     width: 55%;
     justify-content: center;
-    padding-left: 10px;
+    /* padding-left: 10px; */
 }
 
 .column2 {
@@ -9,12 +14,20 @@
     justify-content: center;
 }
 
-.column3 {
-    width: 15%;
-    justify-content: center;
+.noData {
+    color: orange;
+    font-size: 24px;
 }
 
-.column4 {
-    width: 15%;
-    justify-content: center;
+.routineRowContainer {}
+
+.routineRowContent {
+    padding: 5px 5px;
 }
+
+.routineRowExpanded {
+    padding: 5px 5px;
+    border-bottom: 1px solid black;
+}
+
+.tableTitles {}

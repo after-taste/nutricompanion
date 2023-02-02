@@ -7,6 +7,11 @@
     padding: 15px;
 }
 
+.socialContainer {
+    width: 100%;
+    padding: 15px;
+}
+
 .linksContainer {
     padding: 5px 15px;
 }
@@ -17,6 +22,11 @@
 }
 
 .socialLogo {
+    margin: 0 5px;
+}
+
+.socialLogo :hover {
+    color: white;
     margin: 0 5px;
 }
 

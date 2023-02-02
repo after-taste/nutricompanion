@@ -6,10 +6,10 @@ const Video = ({
 }) => {
     return <>
         <Flex
-            direction="row" >
+            direction="row"
+            fullWidth>
             <video
                 controls
-                width="250"
                 {...props}>
                 <source src={src}
                     type="video/mp4" />

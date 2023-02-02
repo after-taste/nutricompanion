@@ -26,7 +26,7 @@ const Footer = ({ theme }) => {
                 flexDirection="row"
                 justifyContent="space-around"
                 alignItems="center">
-                <Flex
+                {/* <Flex
                     className={styles.linksContainer}
                     flexDirection="column">
                     {links.length &&
@@ -39,9 +39,12 @@ const Footer = ({ theme }) => {
                             </Link>
                         ))
                     }
-                </Flex>
+                </Flex> */}
                 <Flex
-                    flexDirection="row">
+                    className={styles.socialContainer}
+                    flexDirection="row"
+                    fullWidth
+                    justifyContent="space-evenly">
                     <Flex
                         className={styles.socialLogo}>
                         <Image
@@ -82,12 +85,12 @@ const Footer = ({ theme }) => {
             <Flex
                 className={styles.contactContainer}
                 flexDirection="row">
-                <p>Phone: 8888-8888 / Email: nutri@companion.com</p>
+                <p>Phone: <a href="tel:+496170961709">8888-8888</a> - Email:  <a href="mailto:nutri@companion.com">nutri@companion.com</a></p>
             </Flex>
             <Flex
                 className={styles.copyrightContainer}
                 flexDirection="row">
-                <p>Copyright 2021</p>
+                <p>Copyright After Taste, 2023</p>
             </Flex>
         </Flex>
     </>);

@@ -10,6 +10,7 @@ const Flex = ({ children, style, ...props }) => {
 	if (props.alignItems) styles.alignItems = props.alignItems;
 	if (props.justifyContent) styles.justifyContent = props.justifyContent;
 	if (props.backgroundColor) styles.backgroundColor = props.backgroundColor;
+	if (props.backgroundImage) styles.backgroundImage = props.backgroundImage;
 
 	return (<>
 		<div

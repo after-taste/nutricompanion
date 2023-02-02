@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import Flex from 'components/Flex/Flex';
 import Image from 'components/Image/Image';
 
@@ -18,7 +18,13 @@ const RoutineBox = ({ routine }) => {
                 };
             })
             :
-            <p>No hay datos para este día.</p>;
+            <Flex
+                className={styles.noData}
+                flexDirection="row"
+                justifyContent="center"
+                fullWidth>
+                <p>No hay datos para este día.</p>;
+            </Flex>
     }, [routine]);
 
     return (<>
@@ -26,6 +32,7 @@ const RoutineBox = ({ routine }) => {
             fullWidth>
             <Flex
                 fullWidth
+                className={styles.tableTitles}
                 flexDirection="row">
                 <Flex
                     className={styles.column1}>
@@ -36,11 +43,11 @@ const RoutineBox = ({ routine }) => {
                     <h4>Sets:</h4>
                 </Flex>
                 <Flex
-                    className={styles.column3}>
+                    className={styles.column2}>
                     <h4>Reps:</h4>
                 </Flex>
                 <Flex
-                    className={styles.column4}>
+                    className={styles.column2}>
                     <h4>Maq:</h4>
                 </Flex>
             </Flex>
@@ -54,13 +61,15 @@ const RoutineRow = ({ set, multiSet }) => {
 
     return (<>
         <Flex
+            className={styles.routineRowContainer}
             fullWidth
             flexDirection="column"
-            backgroundColor={multiSet ? 'lightgray' : ''}
-            onClick={() => setExpanded(!expanded)}>
+            backgroundColor={multiSet ? 'lightgray' : ''}>
             <Flex
+                className={styles.routineRowContent}
+                flexDirection="row"
                 fullWidth
-                flexDirection="row">
+                onClick={() => setExpanded(!expanded)}>
                 <Flex
                     className={styles.column1}>
                     <p>{set.exercise.name}</p>
@@ -70,18 +79,19 @@ const RoutineRow = ({ set, multiSet }) => {
                     <p>{set.sets}</p>
                 </Flex>
                 <Flex
-                    className={styles.column3}>
+                    className={styles.column2}>
                     <p>{set.repetitions}</p>
                 </Flex>
                 <Flex
-                    className={styles.column4}>
+                    className={styles.column2}>
                     <p>25</p>
                 </Flex>
             </Flex>
             {expanded &&
                 <Flex
-                    fullWidth
-                    flexDirection="column">
+                    className={styles.routineRowExpanded}
+                    flexDirection="column"
+                    fullWidth>
                     <p>{set.exercise.description}</p>
                     {set.exercise.howTo &&
                         <Video
