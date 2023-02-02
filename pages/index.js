@@ -17,7 +17,7 @@ const Home = ({ user, ...props }) => {
   return (<>
     <Flex>
       <UserWelcome
-        user={props.user} />
+        user={user} />
       <P>
         {copy.body}
       </P>

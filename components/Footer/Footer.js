@@ -23,6 +23,11 @@ const Footer = ({ theme }) => {
             flexDirection="column"
             backgroundColor={theme?.primaryColor?.hex}>
             <Flex
+                className={styles.contactContainer}
+                flexDirection="row">
+                <P>Phone: <a href="tel:+496170961709">8888-8888</a> - Email:  <a href="mailto:nutri@companion.com">nutri@companion.com</a></P>
+            </Flex>
+            <Flex
                 className={styles.navigationContainer}
                 flexDirection="row"
                 justifyContent="space-around"
@@ -82,11 +87,6 @@ const Footer = ({ theme }) => {
                             alt="Youtube" />
                     </Flex>
                 </Flex>
-            </Flex>
-            <Flex
-                className={styles.contactContainer}
-                flexDirection="row">
-                <P>Phone: <a href="tel:+496170961709">8888-8888</a> - Email:  <a href="mailto:nutri@companion.com">nutri@companion.com</a></P>
             </Flex>
             <Flex
                 className={styles.copyrightContainer}

@@ -36,20 +36,29 @@ const Profile = ({ user, ...props }) => {
     };
 
     const onUpdateClick = async () => {
+        let anyUpdate = false;
+
         if (_user.displayName !== user.displayName) {
             await updateUser({
                 displayName: _user.displayName
             });
+            anyUpdate = true;
         }
 
         if (_user.photoURL !== user.photoURL) {
             await updateUser({
                 photoURL: _user.photoURL
             });
+            anyUpdate = true;
         }
 
         if (_user?.email !== user.email) {
             await updateUserEmail(_user.email);
+            anyUpdate = true;
+        }
+
+        if (anyUpdate) {
+            router.reload();
         }
     };
 

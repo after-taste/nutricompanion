@@ -28,7 +28,7 @@ const Daily = ({ user, description, ...props }) => {
     <Flex>
       <UserWelcome
         showClock
-        user={props.user} />
+        user={user} />
       <P
         align="justify">
         {routine?.description}
